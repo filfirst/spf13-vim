@@ -208,7 +208,9 @@
         set statusline=%<%f\                     " Filename
         set statusline+=%w%h%m%r                 " Options
         if !exists('g:override_spf13_bundles')
-            set statusline+=%{fugitive#statusline()} " Git Hotness
+            if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+                set statusline+=%{fugitive#statusline()} " Git Hotness
+            endif
         endif
         set statusline+=\ [%{&ff}/%Y]            " Filetype
         set statusline+=\ [%{getcwd()}]          " Current dir
